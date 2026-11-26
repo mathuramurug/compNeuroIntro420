@@ -24,11 +24,20 @@
           hash = "sha256-zzrzREWCO/Ci1N2dq79FrZcyEU3FYPRkp6SUxEvZy6M=";
         };
       });
-      
+      hasseDiagram = pkgs.rPackages.buildRPackage {
+        name = "hasseDiagram";
+        version = "0.2.0";
+        src = pkgs.fetchurl {
+          url = "https://cran.r-project.org/src/contrib/Archive/hasseDiagram/hasseDiagram_0.2.0.tar.gz";
+          hash = "sha256-8BTrklzfFki76iFjLEmWo142udrCyB7+uxWbh+TnJNo=";
+        };
+        propagatedBuildInputs = with pkgs.rPackages; [ Rgraphviz graph ];
+      };
       renv = pkgs.rWrapper.override {
         packages = with pkgs.rPackages; [
           ggplot2
           knitr
+          hasseDiagram
           rmarkdown
           fcaR
           ggraph
