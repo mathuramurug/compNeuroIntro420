@@ -37,7 +37,7 @@ weights = np.random.randn(2)
 bias = 0
 learning_rate = 0.001
 
-for epoch in range(100):
+for epoch in range(1000):
     for i in range(len(X)):
 
         observed = np.dot(X[i], weights) + bias
